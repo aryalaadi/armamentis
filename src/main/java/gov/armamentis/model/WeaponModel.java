@@ -5,6 +5,10 @@ public class WeaponModel {
     private String name;
     private int typeID;
     
+    public WeaponModel() {
+        // empty
+    }
+
     
 	public WeaponModel(int weaponID, String name, int typeID) {
 		super();
