@@ -12,18 +12,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Profile</title>
+    <title>Edit Profile - Armamentis</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/profileEdit.css">
 </head>
 <body>
-
-<h1>Edit Profile</h1>
-
-<form action="profile/update" method="post">
-    <label>Name:</label>
-    <input type="text" name="name" value="<%= u.getName() %>" required><br><br>
-
-    <button type="submit">Save Changes</button>
-</form>
-
+  <div class="edit-container">
+    <h1>Edit Profile</h1>
+    <form action="profile/update" method="post" class="edit-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%= u.getName() %>" required>
+      
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
 </body>
 </html>

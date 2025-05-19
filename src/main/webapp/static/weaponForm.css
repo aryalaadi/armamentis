@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 2rem 3rem;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #e8e4d9, #d5c3a4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-blend-mode: overlay;
+    color: #3e2c1c;
+    min-height: 100vh;
+}
+
+.weapon-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    border: 2px solid #c2b38b;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #4a3624;
+    text-align: center;
+}
+
+.weapon-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: bold;
+    color: #5a4b32;
+}
+
+.weapon-form input[type="text"],
+.weapon-form select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #c2b38b;
+    border-radius: 6px;
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1rem;
+    color: #3e2c1c;
+    transition: border-color 0.3s ease;
+}
+
+.weapon-form input[type="text"]:focus,
+.weapon-form select:focus {
+    border-color: #a68b5b;
+    outline: none;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.save-btn {
+    background-color: #a68b5b;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #8c7348;
+}
+
+.cancel-btn {
+    background-color: #d6c8a5;
+    color: #4a3624;
+    border: 1.5px solid #c2b38b;
+    text-align: center;
+}
+
+.cancel-btn:hover {
+    background-color: #b9a772;
+    color: white;
+}

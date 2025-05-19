@@ -7,61 +7,93 @@
         return;
     }
 
-    // Optional role check (only admin allowed)
     gov.armamentis.model.UserModel user = (gov.armamentis.model.UserModel) session.getAttribute("user");
     if(!"admin".equalsIgnoreCase(user.getRole())) {
         response.getWriter().println("Access denied.");
         return;
     }
 
-    List<WeaponModel> weapons = new WeaponDAO().all();
+    String searchQuery = request.getParameter("search");
+    List<WeaponModel> weapons;
+    
+    if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+        weapons = new WeaponDAO().searchByName(searchQuery.trim());
+    } else {
+        weapons = new WeaponDAO().all();
+    }
+    
     WeaponTypeDAO typeDAO = new WeaponTypeDAO();
 %>
 
+<!DOCTYPE html>
 <html>
 <head>
-<title>Weapons Management</title>
-<style>
-  body { font-family: sans-serif; margin: 20px; }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { padding: 8px 12px; border: 1px solid #ccc; }
-  th { background-color: #f2f2f2; }
-  a.button { text-decoration: none; padding: 6px 10px; border: 1px solid #333; border-radius: 4px; background-color: #ddd; }
-</style>
+    <title>Weapons Management - Armamentis</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/weapons.css">
+    <style>
+        .search-form {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        .search-form input {
+            padding: 8px;
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
-
-<h2>Weapons Management 
-  <a href="weaponForm.jsp" class="button">+ Add Weapon</a>
-</h2>
-
-<table>
-<tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Actions</th>
-</tr>
-
-<%
-    for (WeaponModel w : weapons) {
-        WeaponTypeModel type = typeDAO.findById(w.getTypeID());
-%>
-<tr>
-    <td><%= w.getWeaponID() %></td>
-    <td><%= w.getName() %></td>
-    <td><%= (type != null) ? type.getTypeName() : "Unknown" %></td>
-    <td>
-        <a href="weaponForm.jsp?id=<%= w.getWeaponID() %>" class="button">Edit</a>
-        <a href="weapon?op=delete&id=<%= w.getWeaponID() %>" class="button"
-           onclick="return confirm('Delete this weapon?');">Delete</a>
-    </td>
-</tr>
-<%
-    }
-%>
-
-</table>
-
+    <div class="weapons-container">
+        <h1>Weapons Management</h1>
+        <a href="weaponForm.jsp" class="btn add-btn">+ Add Weapon</a>
+        
+        <form method="get" action="weapons.jsp" class="search-form">
+            <input type="text" name="search" placeholder="Search by weapon name..." 
+                   value="<%= searchQuery != null ? searchQuery : "" %>">
+            <button type="submit" class="btn search-btn">Search</button>
+            <% if (searchQuery != null && !searchQuery.trim().isEmpty()) { %>
+                <a href="weapons.jsp" class="btn clear-btn">Clear</a>
+            <% } %>
+        </form>
+        
+        <table class="weapons-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    if (weapons.isEmpty()) {
+                %>
+                <tr>
+                    <td colspan="4">No weapons found</td>
+                </tr>
+                <%
+                    } else {
+                        for (WeaponModel w : weapons) {
+                            WeaponTypeModel type = typeDAO.findById(w.getTypeID());
+                %>
+                <tr>
+                    <td><%= w.getWeaponID() %></td>
+                    <td><%= w.getName() %></td>
+                    <td><%= (type != null) ? type.getTypeName() : "Unknown" %></td>
+                    <td>
+                        <a href="weaponForm.jsp?id=<%= w.getWeaponID() %>" class="btn edit-btn">Edit</a>
+                        <a href="weapon?op=delete&id=<%= w.getWeaponID() %>" 
+                           class="btn delete-btn"
+                           onclick="return confirm('Delete this weapon?');">Delete</a>
+                    </td>
+                </tr>
+                <%
+                        }
+                    }
+                %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -1,0 +1,98 @@
+/* Base body styling with warm, textured background */
+body {
+    margin: 2rem;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #e8e4d9, #d5c3a4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-blend-mode: overlay;
+    color: #3e2c1c;
+}
+
+/* Page header */
+h1 {
+    color: #4a3624;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+/* Form container */
+form {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text input fields */
+input[type="text"] {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #c2b38b;
+    border-radius: 6px;
+    min-width: 200px;
+    background-color: #faf7ef;
+    color: #3e2c1c;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #a68b5b;
+}
+
+/* Buttons with warm tones */
+button {
+    background-color: #a68b5b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Garamond", "Georgia", serif;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8c7348;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #faf7ef;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table headers */
+th {
+    padding: 0.75rem 1rem;
+    background-color: #d5c3a4;
+    color: #3e2c1c;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Table cells */
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #c2b38b;
+    color: #3e2c1c;
+}
+
+/* Inline forms for edit/delete */
+form[style*="display:inline;"] input[type="text"] {
+    width: 150px;
+    background-color: #faf7ef;
+    border: 1px solid #c2b38b;
+}
+
+form[style*="display:inline;"] {
+    margin: 0 0.25rem;
+}

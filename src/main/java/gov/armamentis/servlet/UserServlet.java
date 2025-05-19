@@ -12,6 +12,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.sql.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
@@ -70,6 +72,78 @@ public class UserServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             response.getWriter().println("Error: " + e.getMessage());
+        }
+    }
+
+ // Handle user management actions for admin (list, delete users)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        HttpSession session = request.getSession(false);
+        UserModel currentUser = (UserModel) (session != null ? session.getAttribute("user") : null);
+
+        if (currentUser == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        if ("listUsers".equals(action)) {
+            if (!"admin".equalsIgnoreCase(currentUser.getRole())) {
+                response.getWriter().println("Access denied.");
+                return;
+            }
+            listUsers(request, response);
+        } else if ("deleteUser".equals(action)) {
+            if (!"admin".equalsIgnoreCase(currentUser.getRole())) {
+                response.getWriter().println("Access denied.");
+                return;
+            }
+            deleteUser(request, response);
+        } else {
+            // fallback or other GET actions here
+            response.sendRedirect("profile.jsp");
+        }
+    }
+
+    private void listUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try (Connection conn = DBUtil.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT userid, name, email, role FROM User");
+            ResultSet rs = stmt.executeQuery();
+
+            List<UserModel> users = new ArrayList<>();
+            while (rs.next()) {
+                users.add(new UserModel(
+                    rs.getInt("userid"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    null, // password hidden
+                    rs.getString("role")
+                ));
+            }
+
+            request.setAttribute("users", users);
+            request.getRequestDispatcher("user_management.jsp").forward(request, response);
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String idStr = request.getParameter("id");
+        if (idStr == null) {
+            response.sendRedirect("UserServlet?action=listUsers");
+            return;
+        }
+
+        try (Connection conn = DBUtil.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM User WHERE userid = ?");
+            stmt.setInt(1, Integer.parseInt(idStr));
+            int affected = stmt.executeUpdate();
+
+            // Redirect back to list with a simple query param for success or fail
+            response.sendRedirect("UserServlet?action=listUsers&deleted=" + (affected > 0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.sendRedirect("UserServlet?action=listUsers&deleted=false");
         }
     }
 

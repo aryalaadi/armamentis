@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #f4efe8, #dcd0b4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-size: cover;
+    background-blend-mode: overlay;
+    color: #3e2c1c;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 2px solid #c5b185;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #5a4026;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.role-text {
+    text-align: center;
+    font-style: italic;
+    font-size: 1rem;
+    color: #7c6248;
+    margin-bottom: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #6a4e30;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e6d6b3;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #cbb890;
+}
+
+.about-section {
+    background-color: #fefaf4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #d6c4a1;
+}
+
+.about-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    color: #4e3a25;
+    text-transform: uppercase;
+}
+
+.about-section p {
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #3c2c1e;
+}

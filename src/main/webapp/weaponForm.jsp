@@ -22,36 +22,39 @@
     }
 %>
 
+<!DOCTYPE html>
 <html>
-<head><title><%= weapon != null ? "Edit" : "Add" %> Weapon</title></head>
+<head>
+    <title><%= weapon != null ? "Edit" : "Add" %> Weapon - Armamentis</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/weaponForm.css">
+</head>
 <body>
-<h2><%= weapon != null ? "Edit" : "Add" %> Weapon</h2>
+    <div class="weapon-form-container">
+        <h1><%= weapon != null ? "Edit" : "Add" %> Weapon</h1>
+        <form action="<%= request.getContextPath() %>/weapon" method="post" class="weapon-form">
+            <input type="hidden" name="op" value="<%= weapon != null ? "update" : "add" %>"/>
+            
+            <% if (weapon != null) { %>
+                <input type="hidden" name="weaponID" value="<%= weapon.getWeaponID() %>"/>
+            <% } %>
 
-<form action="/armamentis/weapon" method="post">
-    <input type="hidden" name="op" value="<%= weapon != null ? "update" : "add" %>"/>
-    
-    <% if (weapon != null) { %>
-        <input type="hidden" name="weaponID" value="<%= weapon.getWeaponID() %>"/>
-    <% } %>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= weapon != null ? weapon.getName() : "" %>" required/>
 
-    Name: <input type="text" name="name" value="<%= weapon != null ? weapon.getName() : "" %>" required/><br/><br/>
+            <label for="typeID">Type:</label>
+            <select id="typeID" name="typeID" required>
+                <% for (WeaponTypeModel type : types) { %>
+                    <option value="<%= type.getTypeID() %>" <%= (weapon != null && weapon.getTypeID() == type.getTypeID()) ? "selected" : "" %>>
+                        <%= type.getTypeName() %>
+                    </option>
+                <% } %>
+            </select>
 
-    Type: 
-    <select name="typeID" required>
-        <% 
-            for (WeaponTypeModel type : types) {
-        %>
-            <option value="<%= type.getTypeID() %>" <%= (weapon != null && weapon.getTypeID() == type.getTypeID()) ? "selected" : "" %>>
-                <%= type.getTypeName() %>
-            </option>
-        <% 
-            }
-        %>
-    </select><br/><br/>
-
-    <button type="submit">Save</button>
-    <a href="weaponList.jsp">Cancel</a>
-</form>
-
+            <div class="form-buttons">
+                <button type="submit" class="btn save-btn">Save</button>
+                <a href="weaponList.jsp" class="btn cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

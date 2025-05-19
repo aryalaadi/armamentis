@@ -1,0 +1,111 @@
+/* Roman-themed User Management CSS */
+
+body {
+    margin: 0;
+    padding: 3rem;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #e8e4d9, #d5c3a4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-blend-mode: overlay;
+    color: #3e2c1c;
+    min-height: 100vh;
+}
+
+.user-management-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    border: 2px solid #c2b38b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    color: #4a3624;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+th, td {
+    padding: 12px 18px;
+    border: 1px solid #c2b38b;
+    text-align: left;
+    color: #4a3624;
+}
+
+th {
+    background-color: #d5c8a0;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f1e8;
+}
+
+.btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-family: "Garamond", "Georgia", serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.delete-btn {
+    background-color: #a3533e;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #7a2e24;
+}
+
+.back-btn {
+    background-color: #a68b5b;
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.back-btn:hover {
+    background-color: #8c7348;
+}
+
+.msg {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.msg.success {
+    color: #3b6f27;
+}
+
+.msg.error {
+    color: #b2302b;
+}
+
+.info {
+    color: #7a7a7a;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}

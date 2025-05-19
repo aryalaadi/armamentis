@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #f5f0e6, #e2d8c2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+.register-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid #bca47c;
+}
+
+.register-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6b4f27;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #4a3820;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.register-form input,
+.register-form select {
+    width: 100%;
+    padding: 0.65rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid #ccbfa6;
+    border-radius: 5px;
+    background-color: #faf8f4;
+    font-size: 1rem;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+    border-color: #bca47c;
+    outline: none;
+    background-color: #fffdf9;
+}
+
+.register-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #a38450;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+}
+
+.register-form button:hover {
+    background-color: #8e713b;
+}
+
+.login-link {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #5e4522;
+}
+
+.login-link a {
+    color: #704214;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    color: #a38450;
+}

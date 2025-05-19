@@ -1,5 +1,6 @@
 package gov.armamentis.dao;
 
+import gov.armamentis.model.InventoryModel;
 import gov.armamentis.model.WeaponModel;
 import gov.armamentis.util.DBUtil;
 
@@ -57,6 +58,32 @@ public class WeaponDAO {
         return w;
     }
 
+    public List<WeaponModel> searchByName(String searchTerm) {
+        List<WeaponModel> weapons = new ArrayList<>();
+        // Remove quotes around the ? placeholder
+        String sql = "SELECT * FROM Weapon WHERE Name LIKE ?";
+        
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             
+            // The % wildcards should be in the parameter, not the SQL
+            stmt.setString(1, "%" + searchTerm + "%");
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    WeaponModel weapon = new WeaponModel();
+                    weapon.setWeaponID(rs.getInt("WeaponID"));  // Match exact column case
+                    weapon.setName(rs.getString("Name"));
+                    weapon.setTypeID(rs.getInt("TypeID"));
+                    weapons.add(weapon);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return weapons;
+    }
     // Add new
     public void add(WeaponModel w) {
         String sql = "INSERT INTO Weapon (name, typeID) VALUES (?, ?)";

@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #e8e4d9, #d5c3a4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-blend-mode: overlay;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3e2c1c;
+}
+
+.edit-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    border: 2px solid #c2b38b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #4a3624;
+    text-transform: uppercase;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+input[type="text"] {
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    border: 1.5px solid #c5b185;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #a68b5b;
+}
+
+button {
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #a68b5b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8c7348;
+}

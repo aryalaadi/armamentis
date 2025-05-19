@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="gov.armamentis.model.UserModel" %>
 <%@ page session="true" %>
 <%
@@ -6,23 +7,40 @@
     response.sendRedirect("login.jsp");
     return;
   }
-  String role = u.getRole(); // Assuming UserModel has getRole()
+  String role = u.getRole();
 %>
+<!DOCTYPE html>
 <html>
-  <body>
-    <h1>Welcome, <%= u.getName() %>!</h1>
+<head>
+    <title>Armamentis Dashboard</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Salve, <%= u.getName() %>!</h1>
+      <p class="role-text">Role: <%= role %></p>
+    </header>
 
-    <nav>
-      <a href="weapons.jsp">Weapons</a> |
-      <a href="inventory.jsp">Inventory</a> |
-      <a href="maintenance.jsp">Maintenance</a> |
+    <nav class="nav-links">
+      <a href="weapons.jsp">Weapons</a>
+      <a href="inventory">Inventory</a>
       <a href="profile.jsp">Profile</a>
+      <a href="contact.jsp">Contact Us</a>
       <% if ("admin".equalsIgnoreCase(role)) { %>
-        | <a href="admin_panel.jsp">Admin Panel</a>
-        | <a href="user_management.jsp">User Management</a>
+        <a href="user_management.jsp">User Management</a>
       <% } %>
     </nav>
 
-    <p>You are logged in as: <%= role %></p>
-  </body>
+    <section class="about-section">
+      <h2>About Armamentis</h2>
+      <p>
+        <strong>Armamentis</strong> is the central command platform for managing the military armament of the Roman Republic.
+        Designed for clarity, strength, and efficiency, it empowers administrators, quartermasters, and soldiers alike to maintain 
+        strict oversight of national defense resources. Whether you're tracking weapons, managing inventory, or commanding from the 
+        admin panel — Armamentis ensures order, precision, and honor in every task.
+      </p>
+    </section>
+  </div>
+</body>
 </html>

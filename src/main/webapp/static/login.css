@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #f5f0e6, #e2d8c2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid #bca47c;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6b4f27;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #4a3820;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.65rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid #ccbfa6;
+    border-radius: 5px;
+    background-color: #faf8f4;
+    font-size: 1rem;
+}
+
+.login-form input:focus {
+    border-color: #bca47c;
+    outline: none;
+    background-color: #fffdf9;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #a38450;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+}
+
+.login-form button:hover {
+    background-color: #8e713b;
+}
+
+.error-message {
+    color: #a80000;
+    background-color: #fff0f0;
+    border: 1px solid #e0b4b4;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.register-link {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #5e4522;
+}
+
+.register-link a {
+    color: #704214;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.register-link a:hover {
+    color: #a38450;
+}

@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 2rem 3rem;
+    font-family: "Garamond", "Georgia", serif;
+    background: linear-gradient(to right, #e8e4d9, #d5c3a4);
+    background-image: url("https://www.transparenttextures.com/patterns/white-marble.png");
+    background-blend-mode: overlay;
+    color: #3e2c1c;
+    min-height: 100vh;
+}
+
+.weapons-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    border: 2px solid #c2b38b;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #4a3624;
+    text-align: center;
+}
+
+.add-btn {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    background-color: #a68b5b;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #8c7348;
+}
+
+.weapons-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.weapons-table th, .weapons-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid #c2b38b;
+    text-align: left;
+}
+
+.weapons-table th {
+    background-color: #d6c8a5;
+    color: #4a3624;
+    text-transform: uppercase;
+}
+
+.weapons-table tbody tr:nth-child(even) {
+    background-color: #f5f1de;
+}
+
+.btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 0.9rem;
+}
+
+.edit-btn {
+    background-color: #a68b5b;
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #8c7348;
+}
+
+.delete-btn {
+    background-color: #e05353;
+    color: white;
+    border: none;
+    margin-left: 0.5rem;
+}
+
+.delete-btn:hover {
+    background-color: #b03a3a;
+}
